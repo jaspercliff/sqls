@@ -9,8 +9,8 @@ SELECT *
 FROM performance_schema.data_lock_waits
 LIMIT 100;
 
-SELECT *
-FROM information_schema.innodb_trx;
+
+-- ============== 排查死锁
 
 SELECT 
     r.trx_id AS waiting_trx_id,
@@ -37,3 +37,15 @@ SELECT
 FROM performance_schema.data_lock_waits w
 INNER JOIN information_schema.innodb_trx r ON w.requesting_engine_transaction_id = r.trx_id
 INNER JOIN information_schema.innodb_trx b ON w.blocking_engine_transaction_id = b.trx_id;
+
+-- =================== 
+
+SELECT 
+    OBJECT_SCHEMA AS db,
+    OBJECT_NAME AS table_name,
+    INDEX_NAME,
+    LOCK_TYPE,
+    LOCK_MODE,  -- 重点看这里，会显示 GAP, REC_NOT_GAP, X, S 等
+    LOCK_STATUS, -- GRANTED(已获得) 或 WAITING(等待中)
+    ENGINE_TRANSACTION_ID AS trx_id
+FROM performance_schema.data_locks;

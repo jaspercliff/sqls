@@ -16,3 +16,15 @@ SHOW VARIABLES LIKE 'long_query_time';
 
 -- 所有的死锁历史都会被记录在 mysqld.log 里
 SHOW VARIABLES LIKE 'innodb_print_all_deadlocks';
+
+-- =========================================== transaction
+-- 事务自动提交
+SHOW VARIABLES LIKE 'autocommit';
+
+-- transaction_isolation (replace tx_isolation depreacted)
+SHOW VARIABLES LIKE 'transaction_isolation';
+
+-- =========================================== path 
+SHOW VARIABLES LIKE 'datadir';
+
+SHOW VARIABLES LIKE 'innodb_undo_directory';
