@@ -28,3 +28,7 @@ SHOW VARIABLES LIKE 'transaction_isolation';
 SHOW VARIABLES LIKE 'datadir';
 
 SHOW VARIABLES LIKE 'innodb_undo_directory';
+
+
+-- =========================================== replication
+SHOW VARIABLES LIKE 'gtid_mode';
