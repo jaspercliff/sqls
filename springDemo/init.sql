@@ -1,0 +1,10 @@
+use learn;
+
+-- UserBatchInsertTest
+CREATE TABLE `test_user` (
+    `id` BIGINT AUTO_INCREMENT PRIMARY KEY COMMENT '主键ID',
+    `username` VARCHAR(50) NOT NULL COMMENT '用户名',
+    `email` VARCHAR(100) DEFAULT NULL COMMENT '邮箱',
+    `age` INT DEFAULT NULL COMMENT '年龄',
+    `create_time` DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
